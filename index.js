@@ -1,7 +1,7 @@
 const express = require('express');
 const pg = require('pg');
 
-const connectionString = "postgres://edmynqjkishnfc:f6443300c7f634d81e6ee39522825d2cc191d5c0f2250de7360a7e9fb760f5d4@ec2-54-227-252-202.compute-1.amazonaws.com:5432/d8mjgv9gqsh3lr";
+const connectionString = process.env.DATABASE_URL || "postgres://edmynqjkishnfc:f6443300c7f634d81e6ee39522825d2cc191d5c0f2250de7360a7e9fb760f5d4@ec2-54-227-252-202.compute-1.amazonaws.com:5432/d8mjgv9gqsh3lr";
 
 let client = new pg.Client(connectionString);
 client.connect();
@@ -32,6 +32,6 @@ app.get("/branches/:bank/:city", function(req, res, next) {
     });
 });
 
-app.listen(3000, function() {
-    console.log("Listeneing on PORT: 3000");
+app.listen(process.env.PORT || 8080, function() {
+    console.log("Service Started.");
 });
