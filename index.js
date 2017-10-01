@@ -38,7 +38,7 @@ app.get("/findbranches", function(req, res, next) {
             return next(err);
         }
         if(result.rows.length === 0) {
-            return res.json("{\"error\": \"Invalid Input bank : "+ bank + ", city : " + city + "\"}")
+            return res.json("{\"error\": \"No branches found for input bank : "+ bank + ", city : " + city + "\"}")
         }
         res.json(JSON.stringify(result.rows));
     });
