@@ -1,7 +1,7 @@
 const express = require('express');
 const pg = require('pg');
 
-const connectionString = "postgres://postgres:password@localhost:5432/bank";
+const connectionString = "postgres://edmynqjkishnfc:f6443300c7f634d81e6ee39522825d2cc191d5c0f2250de7360a7e9fb760f5d4@ec2-54-227-252-202.compute-1.amazonaws.com:5432/d8mjgv9gqsh3lr";
 
 let client = new pg.Client(connectionString);
 client.connect();
