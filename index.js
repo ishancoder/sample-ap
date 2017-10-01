@@ -29,9 +29,9 @@ app.get("/branches/:ifsc", function(req, res, next) {
     });
 });
 
-app.get("/branches/:bank/:city", function(req, res, next) {
-    const bank = req.params['bank'].toUpperCase();
-    const city = req.params['city'].toUpperCase();
+app.get("/findbranches", function(req, res, next) {
+    const bank = req.query.bank.toUpperCase();
+    const city = req.query.city.toUpperCase();
 
     let query = client.query("SELECT ifsc, name AS bankName, branch, address, city, district, state FROM BRANCHES LEFT JOIN BANKS ON BRANCHES.bank_id = BANKS.id WHERE BANKS.name = $1 AND BRANCHES.city = $2", [bank, city], function(err, result) {
         if(err) {
